@@ -1,0 +1,32 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@protected": true,
+    "wp": "https://frozenlettuce38.github.io/contexts/work-provenance/core/v1#",
+    "eventType": "wp:eventType",
+    "creator": { "@id": "wp:creator", "@type": "@id" },
+    "previousEvent": {
+      "@id": "wp:previousEvent",
+      "@context": {
+        "vcId": { "@id": "wp:vcId", "@type": "@id" },
+        "vcHash": "wp:vcHash"
+      }
+    },
+    "generatedBy": {
+      "@id": "wp:generatedBy",
+      "@context": {
+        "software": { "@id": "wp:software", "@container": "@list" },
+        "hardware": { "@id": "wp:hardware", "@container": "@list" },
+        "name": "wp:name",
+        "version": "wp:version",
+        "role": "wp:role",
+        "hardwareType": "wp:hardwareType",
+        "model": "wp:model"
+      }
+    },
+    "statement": "wp:statement",
+    "contentHash": "wp:contentHash",
+    "storageRef": { "@id": "wp:storageRef", "@type": "@id" },
+    "editLogRoot": "wp:editLogRoot"
+  }
+}

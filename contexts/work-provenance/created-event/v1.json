@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$metadata": {
+    "uris": {
+      "jsonLdContext": "https://frozenlettuce38.github.io/contexts/work-provenance/created-event/v1.jsonld",
+      "jsonSchema": "https://frozenlettuce38.github.io/contexts/work-provenance/created-event/v1.json"
+    },
+    "merklizationRootPosition": "Index"
+  },
+  "type": "object",
+  "properties": {
+    "credentialSubject": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "title": "Work DID (did:key)" },
+        "eventType": { "type": "string", "const": "Created" },
+        "creator": { "type": "string", "title": "Creator DID" },
+        "statement": { "type": "string" },
+        "contentHash": { "type": "string" },
+        "storageRef": { "type": "string" },
+        "generatedBy": {
+          "type": "object",
+          "properties": {
+            "role": {
+              "type": "string",
+              "enum": ["CharacterDesign", "StoryWriting", "PromptEngineering", "Coloring", "Composition", "Mixing", "VoiceActing"]
+            },
+            "software": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": { "type": "string" },
+                  "version": { "type": "string" }
+                }
+              }
+            },
+            "hardware": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "hardwareType": { "type": "string" },
+                  "model": { "type": "string" }
+                }
+              }
+            }
+          }
+        }
+      },
+      "required": ["id", "eventType", "creator", "contentHash", "storageRef"]
+    }
+  }
+}

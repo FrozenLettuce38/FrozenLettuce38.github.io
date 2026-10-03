@@ -3,7 +3,12 @@
     "https://frozenlettuce38.github.io/contexts/work-provenance/core/v1.jsonld",
     {
       "@version": 1.1,
-      "CreatedEvent": { "@id": "wp:CreatedEvent" }
+      "CreatedEvent": {
+        "@id": "wp:CreatedEvent",
+        "@context": {
+          "@version": 1.1
+        }
+      }
     }
   ]
 }

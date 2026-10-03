@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$metadata": {
+    "uris": {
+      "jsonLdContext": "https://frozenlettuce38.github.io/contexts/work-provenance/snapshot-created-event/v1.jsonld",
+      "jsonSchema": "https://frozenlettuce38.github.io/contexts/work-provenance/snapshot-created-event/v1.json"
+    },
+    "merklizationRootPosition": "Index"
+  },
+  "type": "object",
+  "properties": {
+    "credentialSubject": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "eventType": { "type": "string", "const": "SnapshotCreated" },
+        "previousEvent": {
+          "type": "object",
+          "properties": {
+            "vcId": { "type": "string" },
+            "vcHash": { "type": "string" }
+          }
+        },
+        "editLogRoot": { "type": "string" },
+        "contentHash": { "type": "string" },
+        "storageRef": { "type": "string" }
+      },
+      "required": ["id", "eventType", "previousEvent", "editLogRoot", "contentHash", "storageRef"]
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$metadata": {
+    "uris": {
+      "jsonLdContext": "https://frozenlettuce38.github.io/contexts/work-provenance/snapshot-created-event/v2.jsonld",
+      "jsonSchema": "https://frozenlettuce38.github.io/contexts/work-provenance/snapshot-created-event/v2.json"
+    },
+    "merklizationRootPosition": "Index"
+  },
+  "type": "object",
+  "properties": {
+    "credentialSubject": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "title": "Work DID (did:key)" },
+        "eventType": { "type": "string", "const": "SnapshotCreated" },
+        "previousEvent": {
+          "type": "object",
+          "properties": {
+            "vcId": { "type": "string" },
+            "vcHash": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" }
+          },
+          "required": ["vcId", "vcHash"]
+        },
+        "completedRole": {
+          "type": "string",
+          "title": "Role whose work is completed at this snapshot (optional)",
+          "enum": ["CharacterDesign", "StoryWriting", "PromptEngineering", "Coloring", "Composition", "Mixing", "VoiceActing", "Rough", "LineArt", "Finishing"]
+        },
+        "editLogRoot": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
+        "contentHash": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
+        "storageRef": { "type": "string" },
+        "commitId": {
+          "type": "string",
+          "title": "Git commit id of the work state (optional, record only)",
+          "pattern": "^([0-9a-f]{40}|[0-9a-f]{64})$"
+        },
+        "generatedBy": {
+          "type": "object",
+          "title": "Tools used since the previous event (optional). Omission means undeclared, not 'no AI'.",
+          "properties": {
+            "software": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": { "type": "string" },
+                  "version": { "type": "string" },
+                  "role": { "type": "string", "enum": ["manual", "ai-assist", "ai-generation"] }
+                },
+                "required": ["name"]
+              }
+            },
+            "hardware": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "hardwareType": { "type": "string" },
+                  "model": { "type": "string" },
+                  "role": { "type": "string", "enum": ["manual"] }
+                }
+              }
+            }
+          }
+        }
+      },
+      "required": ["id", "eventType", "previousEvent", "editLogRoot", "contentHash", "storageRef"]
+    }
+  }
+}

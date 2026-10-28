@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$metadata": {
+    "uris": {
+      "jsonLdContext": "https://frozenlettuce38.github.io/contexts/work-provenance/created-event/v2.jsonld",
+      "jsonSchema": "https://frozenlettuce38.github.io/contexts/work-provenance/created-event/v2.json"
+    },
+    "merklizationRootPosition": "Index"
+  },
+  "type": "object",
+  "properties": {
+    "credentialSubject": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "title": "Work DID (did:key)" },
+        "eventType": { "type": "string", "const": "Created" },
+        "creator": { "type": "string", "title": "Creator DID", "pattern": "^did:" },
+        "statement": { "type": "string", "title": "Genesis statement (optional, never used for verification)" },
+        "contentHash": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
+        "storageRef": { "type": "string" },
+        "commitId": {
+          "type": "string",
+          "title": "Git commit id of the work state (optional, record only)",
+          "pattern": "^([0-9a-f]{40}|[0-9a-f]{64})$"
+        },
+        "partOf": {
+          "type": "object",
+          "title": "Parent work (optional)",
+          "properties": {
+            "workId": { "type": "string", "title": "Parent work DID" },
+            "sequenceIndex": { "type": "integer", "minimum": 0 }
+          },
+          "required": ["workId"]
+        },
+        "generatedBy": {
+          "type": "object",
+          "title": "Tools used (optional). Omission means undeclared, not 'no AI'.",
+          "properties": {
+            "software": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": { "type": "string" },
+                  "version": { "type": "string" },
+                  "role": { "type": "string", "enum": ["manual", "ai-assist", "ai-generation"] }
+                },
+                "required": ["name"]
+              }
+            },
+            "hardware": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "hardwareType": { "type": "string" },
+                  "model": { "type": "string" },
+                  "role": { "type": "string", "enum": ["manual"] }
+                }
+              }
+            }
+          }
+        }
+      },
+      "required": ["id", "eventType", "creator", "contentHash", "storageRef"]
+    }
+  }
+}

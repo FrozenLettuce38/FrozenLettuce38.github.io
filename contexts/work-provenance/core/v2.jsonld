@@ -1,0 +1,43 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@protected": true,
+    "wp": "https://frozenlettuce38.github.io/contexts/work-provenance/core/v2#",
+    "eventType": "wp:eventType",
+    "creator": { "@id": "wp:creator", "@type": "@id" },
+    "previousEvent": {
+      "@id": "wp:previousEvent",
+      "@context": {
+        "vcId": { "@id": "wp:vcId", "@type": "@id" },
+        "vcHash": "wp:vcHash"
+      }
+    },
+    "partOf": {
+      "@id": "wp:partOf",
+      "@context": {
+        "workId": { "@id": "wp:workId", "@type": "@id" },
+        "sequenceIndex": { "@id": "wp:sequenceIndex", "@type": "http://www.w3.org/2001/XMLSchema#integer" }
+      }
+    },
+    "generatedBy": {
+      "@id": "wp:generatedBy",
+      "@context": {
+        "software": { "@id": "wp:software", "@container": "@list" },
+        "hardware": { "@id": "wp:hardware", "@container": "@list" },
+        "name": "wp:name",
+        "version": "wp:version",
+        "role": "wp:role",
+        "hardwareType": "wp:hardwareType",
+        "model": "wp:model"
+      }
+    },
+    "statement": "wp:statement",
+    "contentHash": "wp:contentHash",
+    "storageRef": { "@id": "wp:storageRef", "@type": "@id" },
+    "commitId": "wp:commitId",
+    "editLogRoot": "wp:editLogRoot",
+    "completedRole": "wp:completedRole",
+    "nextRole": "wp:nextRole",
+    "handoffTo": { "@id": "wp:handoffTo", "@type": "@id" }
+  }
+}

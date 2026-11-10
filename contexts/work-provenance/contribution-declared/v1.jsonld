@@ -1,0 +1,16 @@
+{
+  "@context": [
+    "https://frozenlettuce38.github.io/contexts/work-provenance/core/v2.jsonld",
+    {
+      "@version": 1.1,
+      "wpc": "https://frozenlettuce38.github.io/contexts/work-provenance/contribution/v1#",
+      "ContributionDeclared": {
+        "@id": "wpc:ContributionDeclared",
+        "@context": {
+          "@version": 1.1,
+          "role": "wpc:role"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$metadata": {
+    "uris": {
+      "jsonLdContext": "https://frozenlettuce38.github.io/contexts/work-provenance/contribution-declared/v1.jsonld",
+      "jsonSchema": "https://frozenlettuce38.github.io/contexts/work-provenance/contribution-declared/v1.json"
+    },
+    "merklizationRootPosition": "Index"
+  },
+  "type": "object",
+  "properties": {
+    "credentialSubject": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "title": "Work DID (did:key)" },
+        "eventType": { "type": "string", "const": "ContributionDeclared" },
+        "role": {
+          "type": "string",
+          "title": "Role the contributor declares (closed list; same values as completedRole / nextRole)",
+          "enum": ["CharacterDesign", "StoryWriting", "PromptEngineering", "Coloring", "Composition", "Mixing", "VoiceActing", "Rough", "LineArt", "Finishing"]
+        },
+        "statement": { "type": "string", "title": "Free-text note (optional, never used for verification)" }
+      },
+      "required": ["id", "eventType", "role"]
+    }
+  }
+}
